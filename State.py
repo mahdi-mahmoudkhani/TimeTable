@@ -64,3 +64,12 @@ class State:
         self.domains[course] = [value]
         return True
     
+    def isFinalState(self):
+        '''
+        Check if the state is a final state.
+        A state is a final state if all courses are assigned.
+        '''
+        for course in self.courses:
+            if len(self.domains[course]) != 1:
+                return False
+        return True
