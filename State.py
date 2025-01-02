@@ -41,8 +41,11 @@ class State:
         Generate a checklist to track instructor-time pairs that are already assigned using Boolean values.
         At the beginning, all instructor-time pairs are unassigned; hence, all values are False.
         '''
+        allIntructors = set()
+        for instructors in self.instructors:
+            allIntructors = allIntructors.union(set(instructors))
         checklist = {}
-        for instructor in self.instructors:
+        for instructor in allIntructors:
             for timeSlot in self.timeSlots:
                 checklist[f"{instructor} at {timeSlot}"] = False
         return checklist
