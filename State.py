@@ -46,3 +46,18 @@ class State:
             for timeSlot in self.timeSlots:
                 checklist[f"{instructor} at {timeSlot}"] = False
         return checklist
+    
+    def AssignValue(self, course, value):
+        '''
+        Assign a value to a course. The value is a tuple of instructor and room-time pair.
+        Check if the room-time pair and instructor-time pair are already assigned.
+        If not, assign the value to the course and update the checklists.
+        '''
+        instructor, roomTime = value
+        if self.roomTimeChecklist[roomTime] or self.instructorTimeChecklist[f"{instructor} at {roomTime.split(' at ')[1]}"]:
+            return False
+        self.roomTimeChecklist[roomTime] = True
+        self.instructorTimeChecklist[f"{instructor} at {roomTime.split(' at ')[1]}"] = True
+        self.domains[course] = [value]
+        return True
+    
