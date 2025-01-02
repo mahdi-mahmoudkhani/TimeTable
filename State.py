@@ -1,10 +1,10 @@
 class State:
-    def __init__(self, courses, instructors, rooms, timeSlots):
+    def __init__(self, courses: dict, instructors: dict, rooms: list, timeSlots: list):
         '''
         Initialize the state of the CSP.
         '''
-        self.courses = courses
-        self.instructors = instructors
+        self.courses = list(courses)
+        self.instructors = list(instructors)
         self.rooms = rooms
         self.timeSlots = timeSlots
         self.domains = self.GenerateDomains()
@@ -19,7 +19,7 @@ class State:
         domains = {}
         for course in self.courses:
             domains[course] = []
-            for instructor in self.instructors:
+            for instructor in self.instructors[self.courses.index(course)]:
                 for room in self.rooms:
                     for timeSlot in self.timeSlots:
                         domains[course].append((instructor, f"{room} at {timeSlot}"))
