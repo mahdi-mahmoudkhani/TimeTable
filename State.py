@@ -9,6 +9,7 @@ class State:
         self.timeSlots = timeSlots
         self.domains = self.GenerateDomains()
         self.roomTimeChecklist = self.GenerateRoomTimeChecklist()
+        self.instructorTimeChecklist = self.GenerateInstructorTimeChecklist()
 
     def GenerateDomains(self):
         '''
@@ -33,4 +34,15 @@ class State:
         for room in self.rooms:
             for timeSlot in self.timeSlots:
                 checklist[f"{room} at {timeSlot}"] = False
+        return checklist
+    
+    def GenerateInstructorTimeChecklist(self):
+        '''
+        Generate a checklist to track instructor-time pairs that are already assigned using Boolean values.
+        At the beginning, all instructor-time pairs are unassigned; hence, all values are False.
+        '''
+        checklist = {}
+        for instructor in self.instructors:
+            for timeSlot in self.timeSlots:
+                checklist[f"{instructor} at {timeSlot}"] = False
         return checklist
