@@ -7,6 +7,7 @@ def forward_checking(state , variable , value):
     
     #unpacked the value 
     timeRoom ,  instructor = value
+    assignedTime , assignedRoom = timeRoom.split(" ")
     
     for course in state['domains']:
         if course == variable:
@@ -15,9 +16,15 @@ def forward_checking(state , variable , value):
         
         for domain_value in state['domains'][course]:
             #unpack the domain value
-            domain_instructor , domain_timeRoom = domain_value
-            if domain_timeRoom == timeRoom or domain_instructor == instructor:
+            domainTimeRoom , domainInstructor = domain_value
+            domainTime , domainRoom = domainTimeRoom.split(" ")
+            
+            #check if the domain value is consistent with the assigned value
+            if domainTime == assignedTime and domainRoom == assignedRoom :
                 continue  
+            if  domainTime == assignedTime and domainInstructor == instructor  :
+                continue
+            
             newDomain.append(domain_value) 
             
             
