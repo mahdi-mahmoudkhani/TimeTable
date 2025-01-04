@@ -1,20 +1,20 @@
 
 from backTracking import backTracking
 
+#if u run it make sure to install tabulate by running ' pip install tabulate '
+from tabulate import tabulate
 def format_Solution(solution):
     '''
-    Formats the solution to a more readable format.
+    Formats the solution as a table for better readability.
     Returns:
-        str: A formatted string of the solution.
+        str:  A formatted string of the solution in table form.
     '''
-    output = "Scheduling Solution:\n"
-    output += "-" * 50 + "\n"
-    output += f"{'Course':<15}{'Time':<15}{'Classroom':<10}{'Instructor':<15}\n"
-    output += "-" * 50 + "\n"
-
-    for vaiable , value in solution['domains'].items():
-        timeRoom , instructor = value[0]
-        time , classRoom = timeRoom.split("  ")
-        output += f"{variable:<15}{time:<15}{classroom:<10}{instructor:<15}\n"
-    output += "-" * 50
-    return output
+    table_data = []
+    for course, assignment in solution['domains'].items():
+        time_room, instructor = assignment[0]
+        time, room = time_room.split(" ")
+        table_data.append([course, instructor, room, time])
+     
+    headers = ["Course", "Instructor", "Classroom", "Time"]
+    return tabulate(table_data, headers, tablefmt="grid")
+        
