@@ -16,7 +16,8 @@ def main():
     solution = backTracking(state)
      # Print the solution in a formatted table
     if solution:
-        print("Solution Found:")
+        print("|||||  Scheduling Solution:\n")
+        print("---->  Solution Found:")
         print(format_Solution(solution))
     else:
         print("No solution found.")
