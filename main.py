@@ -11,6 +11,22 @@ def main():
             "Chemistry": [("10:00-11:00 Room2", "Dr.Fathi"), ("9:00-10:00 Room3", "Dr.Karimi")],
         }
     }
+    
+    # state = {
+    # "domains": {
+    #     "AI": [("9:00-10:00 Room1", "Dr.Moosavi"), ("10:00-11:00 Room2", "Dr.Shahabi")],
+    #     "Physics": [("9:00-10:00 Room2", "Dr.Pouzesh"), ("10:00-11:00 Room1", "Dr.Pouzesh")],
+    #     "Chemistry": [("10:00-11:00 Room3", "Dr.Fathi"), ("9:00-10:00 Room3", "Dr.Karimi")],
+    # }
+    #  }
+    # state = {
+    # "domains": {
+    #     "Math": [("9:00-10:00 Room1", "Dr.A"), ("10:00-11:00 Room2", "Dr.B")],
+    #     "Biology": [("9:00-10:00 Room1", "Dr.A"), ("10:00-11:00 Room3", "Dr.C")],
+    #     "History": [("10:00-11:00 Room1", "Dr.D"), ("11:00-12:00 Room2", "Dr.E")],
+    #     "Physics": [("9:00-10:00 Room2", "Dr.A"), ("10:00-11:00 Room3", "Dr.B")],
+    # }
+    # }
 
     # Run the backtracking algorithm
     solution = backTracking(state)
