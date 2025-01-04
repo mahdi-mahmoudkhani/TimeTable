@@ -27,6 +27,7 @@ def backTracking(state):
         state['domains'][variable] = [value]
         
         #forward checking
-        if fc(state , variable , value) == False:
-            state['domains'] = original_domains
-            continue
+        if fc(state , variable , value) :
+            result = backTracking(state)
+            if result is not None:
+                return result
