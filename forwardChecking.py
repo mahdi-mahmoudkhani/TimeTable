@@ -1,4 +1,4 @@
-from state import State
+from State import State
 
 # Forward Checking function
 def forward_checking(state , variable , value):
