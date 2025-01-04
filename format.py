@@ -15,4 +15,6 @@ def format_Solution(solution):
     for vaiable , value in solution['domains'].items():
         timeRoom , instructor = value[0]
         time , classRoom = timeRoom.split("  ")
-       
+        output += f"{variable:<15}{time:<15}{classroom:<10}{instructor:<15}\n"
+    output += "-" * 50
+    return output
