@@ -14,6 +14,16 @@ def forward_checking(state , variable , value):
         for domain_value in state['domains'][course]:
             #unpack the domain value
             domain_instructor , domain_timeRoom = domain_value
+            if domain_timeRoom == timeRoom or domain_instructor == instructor:
+                continue  
+            newDomain.append(domain_value)
+            
+            
+        state['domains'][course] = newDomain
+        
+        # arcs inconsistent if the domain is empty
+        if not state['domains'][course]:
+            return False
             
     
     return state
