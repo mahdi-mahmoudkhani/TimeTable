@@ -1,4 +1,7 @@
 
+from mrv import mrv
+from lcv import lcv
+from forwardChecking import forward_checking as fc
 
 def backTracking(state):
     '''
@@ -15,3 +18,15 @@ def backTracking(state):
     
     if variable is None:
         return None
+    
+    # iterate over the values in the domain of the variable
+    for value in state['domains'][variable]:
+        # check if the value is consistent with the assignment
+        original_domains = state['domains'].copy()
+        
+        state['domains'][variable] = [value]
+        
+        #forward checking
+        if fc(state , variable , value) == False:
+            state['domains'] = original_domains
+            continue
