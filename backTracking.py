@@ -32,8 +32,20 @@ def backTracking(state):
             if result is not None:
                 return result
             
-        # restore the original domains if the value is not consistent
+        # restore the original domains if the value is not consistent‌ (backtracking)
         state['domains'] = original_domains
     # return None if no consistent value is found
     return None
 
+
+# # sample to test
+# state = {
+#     "domains": {
+#         "AI": [("9:00-10:00 Room1", "Dr.Moosavi"), ("10:00-11:00 Room2", "Dr.Shahabi")],
+#         "Physics": [("9:00-10:00 Room2", "Dr.Pouzesh"), ("10:00-11:00 Room3", "Dr.Pouzesh")],
+#         "Chemistry": [("10:00-11:00 Room2", "Dr.Fathi")],
+#     }
+# }
+
+# solution = backTracking(state)
+# print(state)
