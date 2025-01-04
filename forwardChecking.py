@@ -6,5 +6,14 @@ def forward_checking(state , variable , value):
     #unpacked the value 
     timeRoom ,  instructor = value
     
+    for course in state['domains']:
+        if course == variable:
+            continue #skip the course that was assigned
+        newDomain = []
+        
+        for domain_value in state['domains'][course]:
+            #unpack the domain value
+            domain_instructor , domain_timeRoom = domain_value
+            
     
     return state
