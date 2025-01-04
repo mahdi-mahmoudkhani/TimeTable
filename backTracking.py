@@ -31,3 +31,9 @@ def backTracking(state):
             result = backTracking(state)
             if result is not None:
                 return result
+            
+        # restore the original domains if the value is not consistent
+        state['domains'] = original_domains
+    # return None if no consistent value is found
+    return None
+
