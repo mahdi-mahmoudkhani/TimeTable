@@ -29,5 +29,4 @@ def lcv(state: State, variable):
     # sort the values based on the lowest constraints
     valueConstraints.sort(key=lambda x: x[1])
 
-    # print(valueConstraints)
-    return valueConstraints[0][0]
+    return valueConstraints[0]
