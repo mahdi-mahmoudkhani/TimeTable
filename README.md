@@ -36,7 +36,7 @@ To run the project, ensure the following:
    pip install tabulate
 
 📁 File Structure
-
+```
 ├── backTracking.py       # Backtracking algorithm for solving CSP
 ├── forwardChecking.py    # Implementation of Forward Checking
 ├── mrv.py                # Minimum Remaining Values heuristic
@@ -46,6 +46,7 @@ To run the project, ensure the following:
 ├── State.py              # State management and domain handling
 ├── main.py               # Main entry point for the project
 └── README.md             # Project documentation
+```
 
 📝 Project Workflow
 
@@ -83,14 +84,12 @@ To run the project, ensure the following:
 	1.	Execute the main.py file:
 
 python main.py
-
-
-	2.	Input data, including courses, instructors, classrooms, and time slots, is defined in the givenData.py file.
+	2.	Input data, including courses, instructors, classrooms, and time slots, is defined in the ``` givenData.py ``` file.
 
 💡 Sample Output
 
 After running the project, the generated schedule will be displayed in a table format:
-
+```
 +-----------+-------------+------------+-----------+
 | Course    | Instructor  | Classroom  | Time      |
 +-----------+-------------+------------+-----------+
@@ -98,11 +97,11 @@ After running the project, the generated schedule will be displayed in a table f
 | Physics   | Dr.Pouzesh  | Room2      | 10:00-11:00|
 | Chemistry | Dr.Fathi    | Room3      | 11:00-12:00|
 +-----------+-------------+------------+-----------+
-
+```
 🔬 How to Test
 
 You can define new inputs in the givenData.py file for testing. Example:
-
+```
 state = State(
     courses=["Math", "Physics"],
     instructors={
@@ -112,6 +111,7 @@ state = State(
     rooms=["Room1", "Room2"],
     timeSlots=["9:00-10:00", "10:00-11:00"]
 )
+```
 
 ⚙️ Limitations
 	•	Increasing the number of variables (courses) and constraints may significantly increase runtime.
@@ -120,7 +120,6 @@ state = State(
 🌟 Future Enhancements
 	1.	Add a graphical user interface (GUI) for modifying inputs and viewing results.
 	2.	Optimize algorithms using advanced techniques like Local Search.
-	3.	Allow custom constraints for more complex scheduling requirements.
 
 ✨ Authors
 	•	Name: Mahsa Haghnevis  , Mahdi Mahmoudkhani
