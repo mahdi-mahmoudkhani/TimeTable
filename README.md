@@ -1,80 +1,128 @@
 
-<div dir="rtl">
+# 📅 TimeTable Scheduler
 
-# 📅 برنامه‌ریز زمان‌بندی
+## 🚀 Project Overview
+This project is an intelligent scheduling system designed to allocate courses, instructors, classrooms, and time slots while avoiding conflicts. The system employs advanced algorithms to ensure constraints are satisfied and optimal scheduling is achieved.
 
-## 🚀 معرفی پروژه
-این پروژه یک سیستم هوشمند برای زمان‌بندی درس‌ها، اساتید، کلاس‌ها و بازه‌های زمانی در یک روز کاری دانشگاه است. هدف اصلی این سیستم، جلوگیری از تداخل زمانی، مکانی و تخصیص مناسب اساتید به درس‌ها با رعایت محدودیت‌های مشخص‌شده است.
-
-✨ **ویژگی‌های پروژه**:
-- زمان‌بندی خودکار برای چندین درس با رعایت محدودیت‌ها.
-- استفاده از الگوریتم‌های هوش مصنوعی برای بهبود عملکرد:
-  - **MRV**: انتخاب متغیر با کمترین مقادیر ممکن در دامنه.
-  - **LCV**: انتخاب مقداری که کمترین محدودیت را ایجاد می‌کند.
-  - **Forward Checking**: حذف مقادیر ناسازگار از دامنه‌ها.
-- نمایش خروجی به صورت جدول خوانا.
+✨ **Key Features**:
+- Automatically schedules multiple courses while adhering to constraints.
+- Utilizes advanced algorithms for efficient scheduling:
+  - **MRV**: Chooses the variable with the smallest remaining values in its domain.
+  - **LCV**: Selects the value that imposes the fewest constraints on other variables.
+  - **Forward Checking**: Eliminates inconsistent values from domains.
+- Outputs the schedule in a clear, tabular format.
 
 ---
 
-## 🔍 **مسئله**
-### تعریف مسئله:
-- هر درس باید به یک **استاد**، یک **کلاس** و یک **بازه زمانی** اختصاص یابد.
-- محدودیت‌ها:
-  1. یک کلاس نمی‌تواند در یک بازه زمانی به دو درس اختصاص یابد.
-  2. یک استاد نمی‌تواند در یک بازه زمانی به دو درس تدریس کند.
-  3. دامنه مقادیر هر درس محدود به استادان، کلاس‌ها و بازه‌های زمانی مشخص است.
+## 🔍 Problem Statement
+### Definition:
+- Each course must be assigned:
+  1. An **instructor**.
+  2. A **classroom**.
+  3. A **time slot**.
+
+### Constraints:
+1. A classroom cannot host more than one course at the same time.
+2. An instructor cannot teach more than one course at the same time.
+3. Each course's domain is limited by predefined instructors, classrooms, and time slots.
 
 ---
 
-## 🛠️ **پیش‌نیازها**
-برای اجرای پروژه، نیاز به نصب ابزارهای زیر دارید:
-1. **Python 3.7 یا بالاتر** 
-2. نصب کتابخانه‌های مورد نیاز:
+## 🛠️ Prerequisites
+To run the project, ensure the following:
+1. **Python 3.7 or later** is installed.
+2. Install the required libraries:
    ```bash
    pip install tabulate
 
-📁 ساختار فایل‌ها
+📁 File Structure
 
-├── backTracking.py       # الگوریتم Backtracking
-├── forwardChecking.py    # پیاده‌سازی Forward Checking
-├── mrv.py                # الگوریتم MRV
-├── lcv.py                # الگوریتم LCV
-├── format.py             # قالب‌بندی خروجی
-├── givenData.py          # داده‌های اولیه (درس‌ها، اساتید، کلاس‌ها، زمان‌ها)
-├── State.py              # مدیریت وضعیت مسئله و دامنه‌ها
-├── main.py               # فایل اصلی پروژه
-└── README.md             # مستندات پروژه
+├── backTracking.py       # Backtracking algorithm for solving CSP
+├── forwardChecking.py    # Implementation of Forward Checking
+├── mrv.py                # Minimum Remaining Values heuristic
+├── lcv.py                # Least Constraining Value heuristic
+├── format.py             # Formatting output as a table
+├── givenData.py          # Input data (courses, instructors, classrooms, time slots)
+├── State.py              # State management and domain handling
+├── main.py               # Main entry point for the project
+└── README.md             # Project documentation
 
-📝 شرح عملکرد پروژه
+📝 Project Workflow
 
 🌟 1. GenerateDomains
-	•	هدف: تولید دامنه مقادیر ممکن برای هر درس.
-	•	ورودی‌ها: لیست دروس، اساتید، کلاس‌ها و بازه‌های زمانی.
-	•	خروجی: دیکشنری‌ای شامل دامنه مقادیر ممکن برای هر درس.
+	•	Purpose: Generate the possible domains for each course.
+	•	Input: List of courses, instructors, classrooms, and time slots.
+	•	Output: A dictionary mapping each course to its list of possible values (instructor, classroom-time pairs).
 
 🌟 2. AssignValue
-	•	هدف: اختصاص مقدار به یک درس و به‌روزرسانی وضعیت.
-	•	ورودی‌ها: نام درس، مقدار اختصاص داده‌شده (استاد, کلاس-زمان).
-	•	خروجی: True اگر مقدار معتبر باشد، در غیر این صورت False.
+	•	Purpose: Assign a value to a course and update the state.
+	•	Input: Course name, assigned value (instructor, classroom-time).
+	•	Output: True if the assignment is valid, otherwise False.
 
 🌟 3. MRV
-	•	هدف: انتخاب متغیری که کمترین تعداد مقادیر ممکن را در دامنه خود دارد.
-	•	ورودی: وضعیت فعلی مسئله.
-	•	خروجی: نام درس.
+	•	Purpose: Select the variable with the smallest number of possible values (domain size).
+	•	Input: Current state of the problem.
+	•	Output: The name of the course to be assigned next.
 
 🌟 4. LCV
-	•	هدف: انتخاب مقداری که کمترین محدودیت را برای سایر متغیرها ایجاد کند.
-	•	ورودی: وضعیت فعلی مسئله، متغیر موردنظر.
-	•	خروجی: مقدار انتخاب‌شده.
+	•	Purpose: Select the value that imposes the least constraints on other variables.
+	•	Input: Current state of the problem, target course.
+	•	Output: The value to be assigned.
 
 🌟 5. Forward Checking
-	•	هدف: حذف مقادیر ناسازگار از دامنه متغیرها پس از تخصیص مقدار.
-	•	ورودی: وضعیت فعلی مسئله، متغیر و مقدار تخصیص‌یافته.
-	•	خروجی: وضعیت به‌روز‌شده.
+	•	Purpose: Remove inconsistent values from domains after assigning a value to a variable.
+	•	Input: Current state, course, and assigned value.
+	•	Output: Updated state.
 
 🌟 6. Backtracking
-	•	هدف: جستجوی بازگشتی برای تخصیص مقادیر به متغیرها با رعایت محدودیت‌ها.
-	•	ورودی: وضعیت فعلی مسئله.
-	•	خروجی: وضعیت نهایی (یا None در صورت نبود راه‌حل).
+	•	Purpose: Recursively explore assignments to variables, backtracking when conflicts arise.
+	•	Input: Current state of the problem.
+	•	Output: The final state if a solution is found, or None if no solution exists.
 
-</div>
+🎯 How to Run
+	1.	Execute the main.py file:
+
+python main.py
+
+
+	2.	Input data, including courses, instructors, classrooms, and time slots, is defined in the givenData.py file.
+
+💡 Sample Output
+
+After running the project, the generated schedule will be displayed in a table format:
+
++-----------+-------------+------------+-----------+
+| Course    | Instructor  | Classroom  | Time      |
++-----------+-------------+------------+-----------+
+| AI        | Dr.Moosavi  | Room1      | 9:00-10:00|
+| Physics   | Dr.Pouzesh  | Room2      | 10:00-11:00|
+| Chemistry | Dr.Fathi    | Room3      | 11:00-12:00|
++-----------+-------------+------------+-----------+
+
+🔬 How to Test
+
+You can define new inputs in the givenData.py file for testing. Example:
+
+state = State(
+    courses=["Math", "Physics"],
+    instructors={
+        "Math": ["Dr.A", "Dr.B"],
+        "Physics": ["Dr.C"]
+    },
+    rooms=["Room1", "Room2"],
+    timeSlots=["9:00-10:00", "10:00-11:00"]
+)
+
+⚙️ Limitations
+	•	Increasing the number of variables (courses) and constraints may significantly increase runtime.
+	•	If domains are overly restrictive, the algorithm may fail to find a solution.
+
+🌟 Future Enhancements
+	1.	Add a graphical user interface (GUI) for modifying inputs and viewing results.
+	2.	Optimize algorithms using advanced techniques like Local Search.
+	3.	Allow custom constraints for more complex scheduling requirements.
+
+✨ Authors
+	•	Name: Mahsa Haghnevis  , Mahdi Mahmoudkhani
+
+---
