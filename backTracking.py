@@ -19,7 +19,8 @@ def backTracking(state: State):
         # create a copy of the state
         new_state = state.__copy__()
         # assign the value to the course
-        new_state.AssignValue(course, value)
+        if not new_state.AssignValue(course, value):
+            break
         # forward checking
         new_state = fc(new_state, course, value)
         # check if the assignment is valid
