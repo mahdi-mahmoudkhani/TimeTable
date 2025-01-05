@@ -73,3 +73,13 @@ class State:
             if len(self.domains[course]) != 1:
                 return False
         return True
+    
+    def __copy__(self):
+        '''
+        Create a copy of the state.
+        '''
+        newState = State(self.courses, self.instructors, self.rooms, self.timeSlots)
+        newState.domains = self.domains.copy()
+        newState.roomTimeChecklist = self.roomTimeChecklist.copy()
+        newState.instructorTimeChecklist = self.instructorTimeChecklist.copy()
+        return newState
