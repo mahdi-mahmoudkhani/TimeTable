@@ -21,12 +21,12 @@ def backTracking(state: State):
         # forward checking
         new_state = fc(new_state, course, value)
         # check if the assignment is valid
-        if all(len(new_state.domains[c]) > 0 for c in new_state.domains):
+        if all(len(new_state.domains[c]) > 0 for c in new_state.domains if c != course):
             # recursively call backTracking
             result = backTracking(new_state)
             if result:
                 return result
-        else:
-            state.domains[course].remove(value)
+        # remove the value from the domain of the original state
+        state.domains[course].remove(value)
 
     return False
