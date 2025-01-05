@@ -81,36 +81,38 @@ To run the project, ensure the following:
 	•	Output: The final state if a solution is found, or None if no solution exists.
 
 🎯 How to Run
-	1.	Execute the main.py file:
-
-python main.py
+	1.	Execute the main.py file:  
+```
+python3 main.py  
+```  
 	2.	Input data, including courses, instructors, classrooms, and time slots, is defined in the ``` givenData.py ``` file.
 
 💡 Sample Output
 
 After running the project, the generated schedule will be displayed in a table format:
 ```
-+-----------+-------------+------------+-----------+
-| Course    | Instructor  | Classroom  | Time      |
-+-----------+-------------+------------+-----------+
-| AI        | Dr.Moosavi  | Room1      | 9:00-10:00|
-| Physics   | Dr.Pouzesh  | Room2      | 10:00-11:00|
-| Chemistry | Dr.Fathi    | Room3      | 11:00-12:00|
-+-----------+-------------+------------+-----------+
++-----------+-------------+------------+-------------+
+| Course    | Instructor  | Classroom  | Time        |
++-----------+-------------+------------+-------------+
+| AI        | Dr.Moosavi  | Room1      | 9:00-10:00  |
+| Physics   | Dr.Pouzesh  | Room2      | 10:00-11:00 |
+| Chemistry | Dr.Fathi    | Room3      | 11:00-12:00 |
++-----------+-------------+------------+-------------+
 ```
 🔬 How to Test
 
 You can define new inputs in the givenData.py file for testing. Example:
 ```
-state = State(
-    courses=["Math", "Physics"],
-    instructors={
-        "Math": ["Dr.A", "Dr.B"],
-        "Physics": ["Dr.C"]
-    },
-    rooms=["Room1", "Room2"],
-    timeSlots=["9:00-10:00", "10:00-11:00"]
-)
+instructors = {
+    "AI": ["Dr.A", "Dr.B"],
+    "Physics": ["Dr.C"],
+    "Chemistry": ["Dr.D"],
+    "Music": ["Dr.E", "Dr.C"],
+}
+
+classrooms = ["Room1", "Room2"]
+
+time_slots = ["9:00-10:00", "10:00-11:00"]
 ```
 
 ⚙️ Limitations
