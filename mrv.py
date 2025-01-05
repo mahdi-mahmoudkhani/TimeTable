@@ -1,30 +1,19 @@
+from State import State
 
-def mrv(state ):
+
+def mrv(state: State):
     '''
-    Minimum Remaining Values (MRV) heuristic to select the variable with the smallest domain.  
+    Minimum Remaining Values (MRV) heuristic to select the course with the smallest domain.  
     Returns:
-        str: The variable with the smallest domain, or None if all variables are assigned.
-'''
+        str: The course with the smallest domain, or None if all courses are assigned.
+    '''
     minVar = None
-    minDomain = float('inf') #due to comparison
-    
-    for variable in state['domains']:     
-        if len(state['domains'][variable]) < minDomain and len(state['domains'][variable]) > 1:
-            minVar = variable
-            minDomain = len(state['domains'][variable])
-            
+    minDomain = float('inf')  # due to comparison
+
+    for course in state.domains.keys():
+        # if the course has only one value in its domain, it is already assigned
+        if len(state.domains[course]) < minDomain and len(state.domains[course]) > 1:
+            minVar = course
+            minDomain = len(state.domains[course])
+
     return minVar
-            
-    
-## Sample state for testing
-# state = {
-#     "domains": {
-#         "AI": [("9:00-10:00 Room1", "Dr.Moosavi"), ("10:00-11:00 Room2", "Dr.Shahabi")],
-#         "Physics": [("9:00-10:00 Room1", "Dr.Pouzesh"), ("10:00-11:00 Room2", "Dr.Pouzesh")],
-#         "Chemistry": [("10:00-11:00 Room2", "Dr.Fathi")],
-#     }
-# }
-# state = mrv(state)
-# print(f"Selected variable by MRV: {state}")
-
-
