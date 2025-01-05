@@ -11,9 +11,11 @@ def backTracking(state: State):
 
     # select the course with the smallest domain
     course = mrv(state)
-
     # try each value for the course
-    for value in lcv(state, course):
+    while True:
+        value = lcv(state, course)
+        if not value:
+            return False
         # create a copy of the state
         new_state = state.__copy__()
         # assign the value to the course
@@ -28,5 +30,3 @@ def backTracking(state: State):
                 return result
         # remove the value from the domain of the original state
         state.domains[course].remove(value)
-
-    return False

@@ -12,6 +12,8 @@ def lcv(state: State, variable):
     # get the domain of the variable
     domain = state.domains[variable]
 
+    if len(domain) == 0:
+        return False
     for value in domain:
         # initialize the constraints to 0
         constraints = 0
@@ -29,4 +31,4 @@ def lcv(state: State, variable):
     # sort the values based on the lowest constraints
     valueConstraints.sort(key=lambda x: x[1])
 
-    return valueConstraints[0]
+    return valueConstraints[0][0]
