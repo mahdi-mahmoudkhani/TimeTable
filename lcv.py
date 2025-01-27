@@ -24,7 +24,7 @@ def lcv(state: State, variable):
                 continue
             for otherValue in state.domains[otherVar]:
                 otherInstructor, otherRoomTime = otherValue
-                if otherRoomTime == roomTime or otherInstructor == instructor:
+                if (otherRoomTime == roomTime) or (otherInstructor == instructor and otherRoomTime.split(" at ")[1] == roomTime.split(" at ")[1]):
                     constraints += 1
         # append the value and its constraints to the list
         valueConstraints.append((value, constraints))

@@ -10,6 +10,7 @@ class State:
         self.domains = self.GenerateDomains()
         self.roomTimeChecklist = self.GenerateRoomTimeChecklist()
         self.instructorTimeChecklist = self.GenerateInstructorTimeChecklist()
+        self.assigned = set()
 
     def GenerateDomains(self):
         '''
@@ -62,6 +63,7 @@ class State:
         self.roomTimeChecklist[roomTime] = True
         self.instructorTimeChecklist[f"{instructor} at {roomTime.split(' at ')[1]}"] = True
         self.domains[course] = [value]
+        self.assigned.add(course)
         return True
     
     def isFinalState(self):
@@ -69,10 +71,7 @@ class State:
         Check if the state is a final state.
         A state is a final state if all courses are assigned.
         '''
-        for course in self.courses:
-            if len(self.domains[course]) != 1:
-                return False
-        return True
+        return len(self.assigned) == len(self.courses)
     
     def __copy__(self):
         '''
@@ -82,4 +81,5 @@ class State:
         newState.domains = self.domains.copy()
         newState.roomTimeChecklist = self.roomTimeChecklist.copy()
         newState.instructorTimeChecklist = self.instructorTimeChecklist.copy()
+        newState.assigned = self.assigned
         return newState

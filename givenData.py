@@ -1,18 +1,14 @@
 
 #----------test1---------#
 
-# instructors = {
-#     "AI": ["Dr.Moosavi", "Dr.Shahabi"],
-#     "Physics": ["Dr.Pouzesh"],
-#     "Chemistry": ["Dr.Fathi"],
-#     "Music": ["Dr.Shokoohi", "Dr.Mortazavi"],
-#     "Cinema": ["Dr.Mortazavi", "Dr.Khosravani"],
-#     "Algebra": ["Dr.Pourbagheri"]
-# }
+instructors = {
+    "Physics": ["Dr.Pouzesh"],
+    "Chemistry": ["Dr.Pouzesh"]
+}
 
-# classrooms = ["Room1", "Room2", "Room3"]
+classrooms = ["Room1"]
 
-# time_slots = ["9:00-10:00", "10:00-11:00", "11:00-12:00"]
+time_slots = ["9:00-10:00", "10:00-11:00"]
 
 
 #----------test2---------#
@@ -51,15 +47,15 @@
 #----------test4---------#
 
 
-instructors = {
-    "AI": ["Dr.Moosavi", "Dr.Shahabi", "Dr.Zarghami", "Dr.Soltani"],
-    "Physics": ["Dr.Pouzesh", "Dr.Taghizadeh", "Dr.Keshavarz"],
-    "Chemistry": ["Dr.Fathi", "Dr.Karimi", "Dr.Behboudi"],
-    "Biology": ["Dr.Rahimi", "Dr.Soltani", "Dr.Zahedi"],
-    "Math": ["Dr.Pourbagheri", "Dr.Zahedi", "Dr.Rahimi"],
-    "Cinema": ["Dr.Khosravani", "Dr.Mortazavi", "Dr.Shokoohi"]
-}
+# instructors = {
+#     "AI": ["Dr.Moosavi", "Dr.Shahabi", "Dr.Zarghami", "Dr.Soltani"],
+#     "Physics": ["Dr.Pouzesh", "Dr.Taghizadeh", "Dr.Keshavarz"],
+#     "Chemistry": ["Dr.Fathi", "Dr.Karimi", "Dr.Behboudi"],
+#     "Biology": ["Dr.Rahimi", "Dr.Soltani", "Dr.Zahedi"],
+#     "Math": ["Dr.Pourbagheri", "Dr.Zahedi", "Dr.Rahimi"],
+#     "Cinema": ["Dr.Khosravani", "Dr.Mortazavi", "Dr.Shokoohi"]
+# }
 
-classrooms = ["Room1", "Room2", "Room3", "Room4", "Room5"]
+# classrooms = ["Room1", "Room2", "Room3", "Room4", "Room5"]
 
-time_slots = ["8:00-9:00", "9:00-10:00", "10:00-11:00", "11:00-12:00", "13:00-14:00", "14:00-15:00"]
+# time_slots = ["8:00-9:00", "9:00-10:00", "10:00-11:00", "11:00-12:00", "13:00-14:00", "14:00-15:00"]

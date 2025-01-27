@@ -8,7 +8,7 @@ def main():
     initialState = State(instructors.keys(),
                          instructors.values(), classrooms, time_slots)
     solution = backTracking(initialState)
-    if solution is None:
+    if solution is False:
         print("No solution found!")
         return
     table = format_Solution(solution)

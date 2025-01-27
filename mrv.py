@@ -12,7 +12,7 @@ def mrv(state: State):
 
     for course in state.domains.keys():
         # if the course has only one value in its domain, it is already assigned
-        if len(state.domains[course]) < minDomain and len(state.domains[course]) > 1:
+        if len(state.domains[course]) < minDomain and course not in state.assigned:
             minVar = course
             minDomain = len(state.domains[course])
 
